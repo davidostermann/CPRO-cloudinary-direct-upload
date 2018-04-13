@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import { post } from 'axios'
+// import { post } from 'axios'
 import {
   Image,
   Video,
@@ -32,8 +32,6 @@ class App extends Component {
   onChange = file => this.setState({ file })
 
   handleErrors = response => {
-    console.log('response : ', response)
-
     if (!response.ok) {
       this.setState({ url: null, error: response.statusText })
     }
@@ -47,7 +45,7 @@ class App extends Component {
 
     // return post('/upload', formData).then(data => data.url)
     return (
-      fetch(URL, { method: 'POST', body: formData, cors: true })
+      fetch(URL, { method: 'POST', body: formData })
         // !!! ne pas ajouter de Headers content-type
         .then(this.handleErrors)
         .then(r => r.json())
